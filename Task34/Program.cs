@@ -2,6 +2,12 @@
 
 [345, 897, 568, 234] -> 2 */
 
+Console.Clear();
+int[] array = CreateArrayRndInt(12, 100, 999);
+PrintArray(array);
+Console.Write($" -> {GetEvenElemCount(array)}");
+
+
 int[] CreateArrayRndInt(int size, int min, int max)
 {
     int[] arr = new int[size];
@@ -14,22 +20,16 @@ int[] CreateArrayRndInt(int size, int min, int max)
     return arr;
 }
 
-int[] GetSumPosNegElem(int[] array)
+int GetEvenElemCount(int[] array)
 {
-    int sumNeg = 0;
-    int sumPos = 0;
+    int countEven = 0;
+    
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i] < 0)
-        {
-            sumNeg += array[i];
-        }
-        else
-        {
-            sumPos += array[i];
-        }
+        if (array[i]%2 == 0) countEven++;
     }
-    return new int[] { sumNeg, sumPos };
+    
+    return countEven;
 }
 
 void PrintArray(int[] array)
@@ -42,9 +42,3 @@ void PrintArray(int[] array)
     }
 }
 
-int[] array = CreateArrayRndInt(12, -9, 9);
-PrintArray(array);
-int[] sumPosNegElem = GetSumPosNegElem(array);
-Console.WriteLine();
-Console.WriteLine($"Сумма положительных чисел = {sumPosNegElem[1]}");
-Console.WriteLine($"Сумма отрицательных чисел = {sumPosNegElem[0]}");
